@@ -1,2 +1,0 @@
-WSI-DI Curve Generation
-=======================
