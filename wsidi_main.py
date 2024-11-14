@@ -19,7 +19,8 @@ import weapapi
 scenarios = ['Existing','35','45','55','65','75']
 projects = ['CVP','SWP']
 wsidi_fd = "../wsi-di"
-
+if not os.path.exists(wsidi_fd):
+    os.makedirs(wsidi_fd)
 
 def initial_wsidi():
     #intial wsi-di curve 1:1

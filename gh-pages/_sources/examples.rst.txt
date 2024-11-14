@@ -1,0 +1,8 @@
+Examples using WEAP api
+=======================
+
+To import sacwam::
+
+    import sacwam
+
+Check out the :doc:`notebooks/example_weapapi.ipynb` for detailed demonstration. 

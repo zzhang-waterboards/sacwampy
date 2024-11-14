@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Load weapapi &#8212; Sacwampy 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="load-weapapi">
+<h1>Load weapapi<a class="headerlink" href="#load-weapapi" title="Link to this heading">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Note</span> <span class="n">that</span> <span class="n">the</span> <span class="n">correct</span> <span class="n">version</span> <span class="n">of</span> <span class="n">WEAP</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="nb">open</span> <span class="n">before</span> <span class="n">we</span> <span class="n">run</span> <span class="nb">any</span> <span class="n">modules</span> <span class="ow">or</span> <span class="n">functions</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>“””</p>
+<p>import weapapi</p>
+<p># ===========</p>
+<p>#</p>
+<p># One way to interact with WEAP api is through branches. WEAP branch has</p>
+<p># two possible styles: with variable and without variable. Example branch</p>
+<p># (with variable):</p>
+<p>#</p>
+<p>branch1 = “OtherOpsCVPSWPCVP AllocationsSystemWaterSupplyEst: Annual Activity Level”</p>
+<p>#</p>
+<p>branch2 = “Supply and ResourcesRiverAmerican RiverReservoirsFolsom Lake”</p>
+<p># Activity Level?, but if the branch has more than one variables, you can</p>
+<p># obtain a list of variables through:</p>
+<p>#</p>
+<p>varname = weapapi.get_varnames(branch2,result=None)  # this will return all variables in the branch
+varname</p>
+<p>#</p>
+<p># =======================================</p>
+<p>#</p>
+<p># The following can be used to both retrieve input and output variables.</p>
+<p>#</p>
+<p>value, unit, scale = weapapi.read_value(branch1,2000,12,’Existing’) #retrieve a single value
+var = “Storage Volume”
+scenario = “Existing”
+df = weapapi.get_results(branch2,var,scenario,start_date=’1996-01-01’,end_date=’2000-12-01’) #retrieve a timeseries
+df.head()</p>
+<p>value_sum = weapapi.read_value_stats(branch1,scenario,start_wy=1996,start_ts=1,end_wy=1998,end_ts=12) # sum value for the period
+value_avg = weapapi.read_value_stats(branch1,scenario,start_wy=1996,start_ts=1,</p>
+<blockquote>
+<div><p>end_wy=1998,end_ts=12,method=’average’) # average value for the period</p>
+</div></blockquote>
+<dl class="simple">
+<dt>value_pct = weapapi.read_value_stats(branch1,scenario,start_wy=1996,start_ts=1,</dt><dd><p>end_wy=1998,end_ts=12,method=’percentile’,percentage=”0.3”) # 30% percentile for the period</p>
+</dd>
+</dl>
+<p># ===============</p>
+<p>#</p>
+<p># Occassionally, we may wish to output a large number of timeseries</p>
+<p># (N&gt;100) and it is more effeicient to output them as a favorite.</p>
+<p>#</p>
+<p>favorite = “GW Storage”
+filename = “GW_Storage_%s.csv”%scenario
+run = “2024-10-24 (1)”
+export_favorite(favorite,scenario,filename) #output favorite for current run.
+export_favorite(favorite,scenario,filename,run=run) #output favorite for a selected run (current or archived).</p>
+<p># =============</p>
+<p>#</p>
+<p># Read the csv file created by ExportFavorite</p>
+<p>#</p>
+<p>df = WEAP.read_favorite(filename)</p>
+<p># =============</p>
+<p>#</p>
+<p># Under construction?</p>
+<p>#</p>
+<p># ===============================</p>
+<p>#</p>
+<p># get WEAP expression.
+branch = “Other Assumptions\Ops\CVPSWP\CVP Allocations\System\DemandIndex”
+expression = weapapi.get_expression(branch)
+# set WEAP expression: modify the above expression
+new_expression = expression.replace(‘4171’,’4371’)
+weapapi.set_expression(branch,new_expression)</p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Sacwampy</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Welcome to Sacwampy’s documentation!</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples using WEAP api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/example_weapapi.html">Load weapapi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/example_weapapi.html#WEAP-branch">WEAP branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/example_weapapi.html#Retrieving-inputs-and-results-by-branch">Retrieving inputs and results by branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/example_weapapi.html#Export-favorite">Export favorite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/example_weapapi.html#Read-favorite">Read favorite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/example_weapapi.html#Save-Favorite">Save Favorite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/example_weapapi.html#Read-and-modify-WEAP-expression">Read and modify WEAP expression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wsidi.html">WSI-DI Curve Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">WEAP API Function List</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Zhenlin Zhang.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/example_weapapi.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
