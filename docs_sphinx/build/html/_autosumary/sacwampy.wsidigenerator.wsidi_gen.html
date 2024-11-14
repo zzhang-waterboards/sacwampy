@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sacwampy.wsidigenerator.wsidi_gen &#8212; Sacwampy 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="sacwampy-wsidigenerator-wsidi-gen">
+<h1>sacwampy.wsidigenerator.wsidi_gen<a class="headerlink" href="#sacwampy-wsidigenerator-wsidi-gen" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="sacwampy.wsidigenerator.wsidi_gen">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sacwampy.wsidigenerator.</span></span><span class="sig-name descname"><span class="pre">wsidi_gen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datafn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wsi_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wsi'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">di_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'di'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wsi_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sacwampy.wsidigenerator.wsidi_gen" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sacwampy.wsidigenerator.wsidi_gen.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datafn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wsi_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'wsi'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">di_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'di'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wsi_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sacwampy.wsidigenerator.wsidi_gen.__init__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sacwampy.wsidigenerator.wsidi_gen.__init__" title="sacwampy.wsidigenerator.wsidi_gen.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(name[, datafn, wsi_var, di_var, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sacwampy.wsidigenerator.wsidi_gen.get_all_function_pairs" title="sacwampy.wsidigenerator.wsidi_gen.get_all_function_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_function_pairs</span></code></a>()</p></td>
+<td><p>Returns
+
+Final wsi-di curve in Pandas DataFrame</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_function_pairs_ext</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sacwampy.wsidigenerator.wsidi_gen.get_function_pair" title="sacwampy.wsidigenerator.wsidi_gen.get_function_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_function_pair</span></code></a>(wsi0, di0, offset)</p></td>
+<td><p>Get function pair returns a single point on the wsi-di curve</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sacwampy.wsidigenerator.wsidi_gen.get_slope" title="sacwampy.wsidigenerator.wsidi_gen.get_slope"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_slope</span></code></a>(wsi0, di0, offset)</p></td>
+<td><p>Calculates slope for a particular data point (wsi0, di0)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sacwampy.wsidigenerator.wsidi_gen.get_std" title="sacwampy.wsidigenerator.wsidi_gen.get_std"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_std</span></code></a>(data)</p></td>
+<td><p>Gets cumulative step-wise standard deviation for input data set as projected from initial wsi-di curve</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sacwampy.wsidigenerator.wsidi_gen.load_ini" title="sacwampy.wsidigenerator.wsidi_gen.load_ini"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_ini</span></code></a>(fname)</p></td>
+<td><p>Load initial wsi and di.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="sacwampy.wsidigenerator.wsidi_gen.get_all_function_pairs">
+<span class="sig-name descname"><span class="pre">get_all_function_pairs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sacwampy.wsidigenerator.wsidi_gen.get_all_function_pairs" title="Link to this definition">¶</a></dt>
+<dd><section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h2>
+<p>Final wsi-di curve in Pandas DataFrame</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sacwampy.wsidigenerator.wsidi_gen.get_function_pair">
+<span class="sig-name descname"><span class="pre">get_function_pair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wsi0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">di0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sacwampy.wsidigenerator.wsidi_gen.get_function_pair" title="Link to this definition">¶</a></dt>
+<dd><p>Get function pair returns a single point on the wsi-di curve</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sacwampy.wsidigenerator.wsidi_gen.get_slope">
+<span class="sig-name descname"><span class="pre">get_slope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wsi0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">di0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sacwampy.wsidigenerator.wsidi_gen.get_slope" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates slope for a particular data point (wsi0, di0)</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<p>wsi0 : float
+di0 : float
+offset : float</p>
+</section>
+<section id="id1">
+<h2>Returns<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>slope : float</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sacwampy.wsidigenerator.wsidi_gen.get_std">
+<span class="sig-name descname"><span class="pre">get_std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sacwampy.wsidigenerator.wsidi_gen.get_std" title="Link to this definition">¶</a></dt>
+<dd><p>Gets cumulative step-wise standard deviation for input data set as projected from initial wsi-di curve</p>
+<section id="id2">
+<h2>Parameters<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>data<span class="classifier">Pandas DataFrame</span></dt><dd><p>new wsi-di curve dataframe different from self.data_ini.</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h2>Returns<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>stdev : float</p>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sacwampy.wsidigenerator.wsidi_gen.load_ini">
+<span class="sig-name descname"><span class="pre">load_ini</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sacwampy.wsidigenerator.wsidi_gen.load_ini" title="Link to this definition">¶</a></dt>
+<dd><p>Load initial wsi and di.</p>
+<section id="id4">
+<h2>Parameters<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>fname<span class="classifier">str</span></dt><dd><p>csv data file for the wsidi curve calcluated from calc_wsidi.py</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Sacwampy</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to Sacwampy’s documentation!</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/example_weapapi.html">Load weapapi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/example_weapapi.html#WEAP-branch">WEAP branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/example_weapapi.html#Retrieving-inputs-and-results-by-branch">Retrieving inputs and results by branch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/example_weapapi.html#Export-favorite">Export favorite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/example_weapapi.html#Read-favorite">Read favorite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/example_weapapi.html#Read-and-modify-WEAP-expression">Read and modify WEAP expression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wsidi.html">WSI-DI Curve Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">WEAP API Function List</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Zhenlin Zhang.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/_autosumary/sacwampy.wsidigenerator.wsidi_gen.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

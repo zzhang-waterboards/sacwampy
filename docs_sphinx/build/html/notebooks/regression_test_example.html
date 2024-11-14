@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Regression test &#8212; Sacwampy 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <script src="../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="WEAP API Function List" href="../api.html" />
+    <link rel="prev" title="WSI-DI Curve Generation" href="wsidi_example.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="Regression-test">
+<h1>Regression test<a class="headerlink" href="#Regression-test" title="Link to this heading">¶</a></h1>
+<section id="Purpose">
+<h2>Purpose<a class="headerlink" href="#Purpose" title="Link to this heading">¶</a></h2>
+<p>The purpose of the regression test is to quickly compare an existing run and an archived run (previous run), display a series of performance metrics and highlight those metrics exceeding predefined thresholds. To perform a regression test, type the following command in a python editor</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%run regression_testing.py
+</pre></div>
+</div>
+</div>
+<p>or in anaconda, type:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>python regression_testing.py
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Inputs">
+<h2>Inputs<a class="headerlink" href="#Inputs" title="Link to this heading">¶</a></h2>
+<p>To customize your run, the input section of ‘regression_testing.py’ is explained below.</p>
+<p>Defines a list of favorites to compare. Note that the favorites defined have to exist for both current run and the archived run.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>favorites = [&quot;Canal Flows&quot;,&quot;COA&quot;,&quot;SW Storage&quot;,&quot;SWRCB IFR Flows&quot;]
+</pre></div>
+</div>
+</div>
+<p>Defines a list of scenarios to compare.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>scenarios = [&quot;Existing&quot;]
+</pre></div>
+</div>
+</div>
+<p>Define the thresholds for anomaly detection; comment out the metrics by ‘#’ if not needed.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics_threshold = {&quot;mean squared error&quot;:2.0,   #mean squared error
+                     #&quot;mape&quot;:0.1, #mean_absolute_percentage_error
+                     &quot;mean error&quot;: 2.0,  # mean error
+                     &quot;mean percent error&quot;: 0.05, #mean percent error
+                     &quot;correcoef&quot;:0.9, # correlation coefficient
+                     &quot;skill score&quot;:0.9} # Nash-Sutcliffe-like skill score based on mean squared error
+</pre></div>
+</div>
+</div>
+<p>Define the run names. Current run can also be defined as ‘Most Recent’. By default, comparisons between only two runs are allowed. If more runs are defined, the script will still export the favorites for all the runs but will give an error when the results are compared.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>runs = [&#39;2024-10-24 (1)&#39;,&#39;2024-10-24 (2)&#39;]
+</pre></div>
+</div>
+</div>
+<p>Define output path for the favorites.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>output_path = &quot;../results&quot;
+</pre></div>
+</div>
+</div>
+<p>If results already exist, overwrite or not.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>overwrite_results = False
+</pre></div>
+</div>
+</div>
+<p>Set the output unit for favorites: only ‘taf’ or ‘cfs’ are implemented. If the outputs is not flow based, the unit will remain unchanged.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>favorite_unit = &#39;taf&#39;
+</pre></div>
+</div>
+</div>
+<p>Note that the unit conversion will slow down the script by about 10 seconds. If no unit convertion is required, set favorite_unit to None.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>favorite_unit = None
+</pre></div>
+</div>
+</div>
+<p>When the script finishes, a table called ‘full_report_%s.xlsx’%scenario will be generated in ouptut_path. The results for each performance metrics will be shown by a separate sheet. The values that exceed the defined thresholds will be highlighted in Red. <img alt="be2c23ff0d9f42a99743f4bf462e6073" src="../_images/report.png" /></p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Sacwampy</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to Sacwampy’s documentation!</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_weapapi.html">WEAP API Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wsidi_example.html">WSI-DI Curve Generation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Regression test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">WEAP API Function List</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="wsidi_example.html" title="previous chapter">WSI-DI Curve Generation</a></li>
+      <li>Next: <a href="../api.html" title="next chapter">WEAP API Function List</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Zhenlin Zhang.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/notebooks/regression_test_example.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

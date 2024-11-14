@@ -1,0 +1,109 @@
+Load weapapi============
+
+::
+
+   Note that the correct version of WEAP needs to be open before we run any modules or functions. 
+
+"""
+
+import weapapi
+
+
+######################################################################
+# WEAP branch
+# ===========
+# 
+# One way to interact with WEAP api is through branches. WEAP branch has
+# two possible styles: with variable and without variable. Example branch
+# (with variable):
+# 
+
+branch1 = "Other\Ops\CVPSWP\CVP Allocations\System\WaterSupplyEst: Annual Activity Level"
+
+
+######################################################################
+# Example branch (without variable):
+# 
+
+branch2 = "Supply and Resources\River\American River\Reservoirs\Folsom Lake"
+
+
+######################################################################
+# When the branch only has one variable, most of the time it is “Annual
+# Activity Level”, but if the branch has more than one variables, you can
+# obtain a list of variables through:
+# 
+
+varname = weapapi.get_varnames(branch2,result=None)  # this will return all variables in the branch
+varname
+
+
+######################################################################
+# Note that not all variables are visible from the WEAP GUI.
+# 
+
+
+######################################################################
+# Retrieving inputs and results by branch
+# =======================================
+# 
+# The following can be used to both retrieve input and output variables.
+# 
+
+value, unit, scale = weapapi.read_value(branch1,2000,12,'Existing') #retrieve a single value 
+var = "Storage Volume"
+scenario = "Existing"
+df = weapapi.get_results(branch2,var,scenario,start_date='1996-01-01',end_date='2000-12-01') #retrieve a timeseries
+df.head()
+
+value_sum = weapapi.read_value_stats(branch1,scenario,start_wy=1996,start_ts=1,end_wy=1998,end_ts=12) # sum value for the period
+value_avg = weapapi.read_value_stats(branch1,scenario,start_wy=1996,start_ts=1,
+                                     end_wy=1998,end_ts=12,method='average') # average value for the period
+value_pct = weapapi.read_value_stats(branch1,scenario,start_wy=1996,start_ts=1,
+                                     end_wy=1998,end_ts=12,method='percentile',percentage="0.3") # 30% percentile for the period
+
+
+######################################################################
+# Export favorite
+# ===============
+# 
+# Occassionally, we may wish to output a large number of timeseries
+# (N>100) and it is more effeicient to output them as a favorite.
+# 
+
+favorite = "GW Storage"
+filename = "GW_Storage_%s.csv"%scenario
+run = "2024-10-24 (1)"
+export_favorite(favorite,scenario,filename) #output favorite for current run. 
+export_favorite(favorite,scenario,filename,run=run) #output favorite for a selected run (current or archived).  
+
+
+######################################################################
+# Read favorite
+# =============
+# 
+# Read the csv file created by ExportFavorite
+# 
+
+df = WEAP.read_favorite(filename)
+
+
+######################################################################
+# Save Favorite
+# =============
+# 
+# Under construction…
+# 
+
+
+######################################################################
+# Read and modify WEAP expression
+# ===============================
+# 
+
+# get WEAP expression.
+branch = "Other Assumptions\\Ops\\CVPSWP\\CVP Allocations\\System\\DemandIndex"
+expression = weapapi.get_expression(branch)
+# set WEAP expression: modify the above expression
+new_expression = expression.replace('4171','4371')
+weapapi.set_expression(branch,new_expression)
