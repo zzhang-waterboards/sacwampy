@@ -12,13 +12,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: conda-incubator/setup-miniconda@v3
         with:
-          activate-environment: sphinx_doc
-          environment-file: etc/environment.yml
-          python-version: 3.5               
-          auto-activate-base: false
+          miniconda-version: "latest"
+          activate-environment: foo
       - run: |
           conda info
           conda list
+          conda install sphinx
+          conda install nbsphinx
       - name: Sphinx build
         run: |
           cd docs && make html
