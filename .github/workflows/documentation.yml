@@ -16,6 +16,9 @@ jobs:
           environment-file: etc/environment.yml
           python-version: 3.5               
           auto-activate-base: false
+      - run: |
+          conda info
+          conda list
       - name: Sphinx build
         run: |
           cd docs && make html
