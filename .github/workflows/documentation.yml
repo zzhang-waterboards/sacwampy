@@ -18,8 +18,8 @@ jobs:
       - run: |
           conda info
           conda list
-          conda install sphinx
           conda install nbsphinx
+          conda install sphinx          
           cd docs && make html
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
