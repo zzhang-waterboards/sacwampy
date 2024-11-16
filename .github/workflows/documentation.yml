@@ -20,9 +20,6 @@ jobs:
           conda list
           conda install sphinx
           conda install nbsphinx
-      - name: Sphinx build
-        run: |
-          conda activate sphinx-docs
           cd docs && make html
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
