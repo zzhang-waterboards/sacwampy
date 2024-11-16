@@ -1,0 +1,8 @@
+name: sphinx
+
+dependencies:
+  - python=3.5
+  - sphinx
+  - nbsphinx
+  - sphinx_rtd_theme
+  

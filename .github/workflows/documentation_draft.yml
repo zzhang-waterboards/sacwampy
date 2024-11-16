@@ -10,12 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: conda-incubator/setup-miniconda@v3
-        with:
-          activate-environment: sphinx
-          environment-file: etc/environment.yml
-          python-version: 3.5          
-          auto-activate-base: false
+      - uses: actions/setup-python@v5
+      - name: Install dependencies
+        run: |
+          pip install sphinx sphinx_rtd_theme myst_parser nbsphinx
       - name: Sphinx build
         run: |
           cd docs && make html
