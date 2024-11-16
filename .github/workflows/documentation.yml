@@ -13,7 +13,8 @@ jobs:
       - uses: conda-incubator/setup-miniconda@v3
         with:
           miniconda-version: "latest"
-          activate-environment: foo
+          activate-environment: sphinx-docs
+          channels: conda-forge
       - run: |
           conda info
           conda list
