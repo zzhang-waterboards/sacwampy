@@ -1,7 +1,6 @@
-name: sphinx
+name: sphinx_doc
 
 dependencies:
-  - python=3.5
   - sphinx
   - nbsphinx
   - sphinx_rtd_theme
